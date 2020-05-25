@@ -13,9 +13,9 @@ namespace ODataWebApiIssue2171Repro01.BatchApp
             var serviceUri = new Uri("http://localhost:7443/odata");
             var context = new Container(serviceUri);
 
-            var query = context.CreateQuery<Movie>("Movies");
-            query.AddQueryOption("$orderby", "Id desc");
-            query.AddQueryOption("$top", 1);
+            var query = context.CreateQuery<Movie>("Movies")
+                .AddQueryOption("$orderby", "Id desc")
+                .AddQueryOption("$top", 1);
 
             var asyncResult = query.BeginExecute(null, null);
             asyncResult.AsyncWaitHandle.WaitOne();

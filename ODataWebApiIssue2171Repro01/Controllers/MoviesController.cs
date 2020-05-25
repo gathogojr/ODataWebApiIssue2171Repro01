@@ -28,8 +28,6 @@ namespace ODataWebApiIssue2171Repro01.Controllers
         [EnableQuery]
         public SingleResult<Movie> Get([FromODataUri]int key)
         {
-            var movieEntity = _db.Movies.Where(d => d.Id.Equals(key)).SingleOrDefault();
-
             return SingleResult.Create(_db.Movies.Where(d => d.Id.Equals(key)));
         }
 
